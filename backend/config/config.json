@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "developer",
+    "database": "assessment",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "port": "5431"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "developer",
+    "database": "assessment",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "developer",
+    "database": "assessment",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "accessToken": "d6b4b56c17012dc7c9a59c004a5f3d4f",
+  "refreshToken": "b7d2f1dd0e780f090d4bc33fd7f3784b"
+}

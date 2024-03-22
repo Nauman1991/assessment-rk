@@ -7,12 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('backend:server');
 var http = require('http');
+var moment = require('moment')
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
 /**
@@ -25,7 +26,15 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, function () {
+  console.log(`
+      -------------NODE SERVER-------------------
+      status:     listening
+      message:    API Server is up and running on port ${port}
+      port:       ${port}
+      url:        http://localhost:${port}
+      --------------------------------------`);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
@@ -88,3 +97,44 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+//Socket.io
+const io = require("socket.io")(server, {
+  cors: {
+    origin: '*',
+  }
+});
+
+io.on("connection", (socket) => {
+  console.log(socket.id);
+
+
+  socket.on("connect", () => {
+    console.log("a user connected");
+    console.log(socket.connected); // true
+  });
+
+  socket.on("connect_error", () => {
+    console.log("user connect_error");
+  });
+
+  socket.on("disconnect", () => {
+    console.log(socket.connected); // false
+    console.log("user disconnected");
+  });
+
+  // socket.on("chat message", (msg) => {
+  //   console.log("message: " + msg);
+  //   io.emit("chat message", msg);
+  // });
+
+  setTimeout(() => {
+    socket.emit('notification', {
+      title: 'Testing ' + moment().fromNow() + 'time',
+      message: 'New content is available!',
+      time: moment().fromNow(),
+    });
+  }, 5000);
+
+});

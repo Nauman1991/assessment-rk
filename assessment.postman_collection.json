@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "9fcd1c80-3436-49ac-9d95-46ba145854e8",
+		"name": "assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28160513"
+	},
+	"item": [
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":{\"name\":\"Test\",\"email\":\"test@test.com\",\"password\":\"12345678\",\"retypePassword\":\"12345678\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/users/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"data\":{\"email\":\"test@test.com\",\"password\":\"12345678\"}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Image upload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRlc3QiLCJwYXNzd29yZCI6IjI1ZDU1YWQyODNhYTQwMGFmNDY0Yzc2ZDcxM2MwN2FkIiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiYXZhdGFyIjpudWxsLCJjcmVhdGVkQXQiOiIyMDI0LTAzLTIyVDE2OjUxOjAxLjYzMFoiLCJ1cGRhdGVkQXQiOiIyMDI0LTAzLTIyVDE2OjUxOjAxLjYzMFoiLCJpYXQiOjE3MTExMjk3OTAsImV4cCI6MTcxMTIxNjE5MH0.rgMhYmZ6jx38925T5ekggpsYuBHQxv4pUUHVmfxHIkY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/naumannaeem/Desktop/testimage.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3001/api/users/uploadImage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						"uploadImage"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
